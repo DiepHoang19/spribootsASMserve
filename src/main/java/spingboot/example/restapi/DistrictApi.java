@@ -5,26 +5,26 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import spingboot.example.entity.Product;
-import spingboot.example.service.ProductService;
+import spingboot.example.entity.District;
+import spingboot.example.service.DistrictService;
 import spingboot.example.validation.ProductIDExisting;
 import spingboot.example.dto.ResponseDTO;
 
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/api/v1/products")
+@RequestMapping("/api/v1/district")
 @Validated
 @CrossOrigin("*")
-public class ProductApi {
+public class DistrictApi {
     @Autowired
-    ProductService productService;
+    DistrictService districtService;
 
     @GetMapping
     public ResponseEntity<ResponseDTO> findAll() {
         ResponseDTO responseDTO = ResponseDTO.builder()
                 .status(HttpStatus.OK.toString())
-                .body(productService.findAll()).build();
+                .body(districtService.findAll()).build();
 
         return ResponseEntity.ok(responseDTO);
     }
@@ -33,32 +33,31 @@ public class ProductApi {
     public ResponseEntity<ResponseDTO> findById(@PathVariable @ProductIDExisting Long id) {
         ResponseDTO responseDTO = ResponseDTO.builder()
                 .status(HttpStatus.OK.toString())
-                .body(productService.findById(id)).build();
+                .body(districtService.findById(id)).build();
 
         return ResponseEntity.ok(responseDTO);
     }
 
     @PostMapping
-    public ResponseEntity<ResponseDTO> create(@RequestBody Product product) {
+    public ResponseEntity<ResponseDTO> create(@RequestBody District district) {
         ResponseDTO responseDTO = ResponseDTO.builder()
                 .status(HttpStatus.CREATED.toString())
-                .body(productService.save(product)).build();
-
+                .body(districtService.save(district)).build();
         return ResponseEntity.status(HttpStatus.CREATED).body(responseDTO);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ResponseDTO> update(@PathVariable Long id, @RequestBody @Valid Product product) {
+    public ResponseEntity<ResponseDTO> update(@PathVariable Long id, @RequestBody @Valid District district) {
         ResponseDTO responseDTO = ResponseDTO.builder()
                 .status(HttpStatus.ACCEPTED.toString())
-                .body(productService.save(product)).build();
+                .body(districtService.save(district)).build();
 
         return ResponseEntity.accepted().body(responseDTO);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<ResponseDTO> delete(@PathVariable @ProductIDExisting Long id) {
-        productService.deleteById(id);
+        districtService.deleteById(id);
 
         ResponseDTO responseDTO = ResponseDTO.builder()
                 .status(HttpStatus.ACCEPTED.toString()).build();

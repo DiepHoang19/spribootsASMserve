@@ -2,7 +2,7 @@ package spingboot.example.validation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import spingboot.example.service.ProductService;
+import spingboot.example.service.DistrictService;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -11,7 +11,7 @@ import java.util.Objects;
 @Component
 public class ProductIDExistingValidator implements ConstraintValidator<ProductIDExisting, Long> {
     @Autowired
-    private ProductService productService;
+    private DistrictService productService;
 
     @Override
     public boolean isValid(Long productId, ConstraintValidatorContext context) {

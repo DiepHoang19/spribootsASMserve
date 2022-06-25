@@ -3,8 +3,6 @@ package spingboot.example.restapi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import spingboot.example.entity.Account;
-import spingboot.example.service.AccountService;
 
 import java.util.List;
 import java.util.Optional;

@@ -2,31 +2,31 @@ package spingboot.example.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import spingboot.example.entity.Product;
-import spingboot.example.repository.ProductRepository;
+import spingboot.example.entity.District;
+import spingboot.example.repository.DistrictRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ProductService {
+public class DistrictService {
     @Autowired
-    ProductRepository productRepository;
+    DistrictRepository productRepository;
 
     @Autowired
-    public ProductService(ProductRepository productRespository) {
+    public DistrictService(DistrictRepository productRespository) {
         this.productRepository = productRespository;
     }
 
-    public List<Product> findAll() {
+    public List<District> findAll() {
         return productRepository.findAll();
     }
 
-    public Optional<Product> findById(Long id) {
+    public Optional<District> findById(Long id) {
         return productRepository.findById(id);
     }
 
-    public Product save(Product stock) {
+    public District save(District stock) {
         return productRepository.save(stock);
     }
 
